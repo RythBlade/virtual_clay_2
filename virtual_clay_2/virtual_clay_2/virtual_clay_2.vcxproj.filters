@@ -11,6 +11,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="input">
+      <UniqueIdentifier>{0f221395-dd14-44c3-8570-3e715b6c790b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\settings\window_settings.h">
@@ -31,6 +34,12 @@
     <ClInclude Include="src\d3d\macros.h">
       <Filter>d3d</Filter>
     </ClInclude>
+    <ClInclude Include="src\d3d\d3d_camera.h">
+      <Filter>d3d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\input\input_handler.h">
+      <Filter>input</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
@@ -39,6 +48,12 @@
     </ClCompile>
     <ClCompile Include="src\d3d\d3d_sphere.cpp">
       <Filter>d3d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\d3d\d3d_camera.cpp">
+      <Filter>d3d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\input\input_handler.cpp">
+      <Filter>input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

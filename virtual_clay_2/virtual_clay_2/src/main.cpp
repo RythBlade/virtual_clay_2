@@ -16,15 +16,16 @@
 #include "settings/directx_settings.h"
 
 #include "d3d/d3d_application.h"
+#include "input/input_handler.h"
 
 /*----------------------------------------------------------------------------\
 *                               Globals		                    			  |
 *----------------------------------------------------------------------------*/
 
 //EventBroker broker;
-//InputHandler inputHandler;
+InputHandler inputHandler;
 //FrameController frameController;
-virtual_clay::D3DApplication d3dApp/*( &broker, &inputHandler, &frameController )*/;
+virtual_clay::D3DApplication d3dApp( &inputHandler );/*( &broker, &inputHandler, &frameController )*/;
 
 /*----------------------------------------------------------------------------\
 *                               Prototypes		                    		  |

@@ -16,7 +16,7 @@ namespace virtual_clay
          eventBroker:		the event broker for the application
          inputHandler:		the input handler for the application
       */
-    D3DApplication::D3DApplication(/*EventBroker *eventBroker, InputHandler *inputHandler, FrameController *frameController*/ )
+    D3DApplication::D3DApplication( InputHandler* inputHandler /*EventBroker *eventBroker, InputHandler *inputHandler, FrameController *frameController*/ )
 		: pSwapchain( nullptr )
 		, pDev( nullptr )
 		, pDevcon( nullptr )
@@ -26,7 +26,7 @@ namespace virtual_clay
 		, pBlend( nullptr )
     {
         //pEventBroker = eventBroker;
-        //pInputHandler = inputHandler;
+        pInputHandler = inputHandler;
         //pFrameController = frameController;
 
         crashed = false;
@@ -323,7 +323,13 @@ namespace virtual_clay
     HRESULT D3DApplication::initGraphics()
     {
         //// initialise the sphere geometry
-        //HrCheck( mSphere.init( pDev, pDevcon, 1.0f, 10, 10 ) );
+		HRESULT result = mSphere.init( pDev, pDevcon, 1.0f, 10, 10 );
+
+		if ( result != S_OK )
+		{
+			return result;
+		}
+
         //
         //HrCheck( particleManager.init( pDev, pDevcon, &mToolManager, m_allowDirectCompute ) );
         //
@@ -335,8 +341,8 @@ namespace virtual_clay
         //HrCheck( mToolManager.init( pDev, pDevcon, &camera, pInputHandler ) );
         //
         //// initiaise the camera position
-        //camera.setRadius( 10.0f );
-        //camera.setMatrices();
+        camera.setRadius( 10.0f );
+        camera.setMatrices();
         //
         //D3D11_BUFFER_DESC bufferDesc;
         //
@@ -472,27 +478,27 @@ namespace virtual_clay
 
     void D3DApplication::handleCameraInput()
     {
-//         if ( ( *pInputHandler->getMouseButtonMap() )[ MOUSE_LBUTTON ] == KEY_HELD )
-//         {
-//             D3DXVECTOR3 *delta = pInputHandler->getMousePosDelta();
-// 
-//             if ( delta->x != 0 )
-//             {
-//                 camera.setHorizontalRotation( camera.getHorizontalRotation() + MOUSE_X_SCROLL_SPEED * delta->x );
-//             }
-// 
-//             if ( delta->y != 0 )
-//             {
-//                 camera.setVerticalRotation( camera.getVerticalRotation() + MOUSE_Y_SCROLL_SPEED * delta->y );
-//             }
-//         }
-// 
-//         float mouseWheelDelta = pInputHandler->getMouseWheelDelta();
-// 
-//         if ( mouseWheelDelta != 0 )
-//         {
-//             camera.setRadius( camera.getRadius() + MOUSE_WHEEL_SCROLL_SPEED * mouseWheelDelta );
-//         }
+         if ( ( *pInputHandler->getMouseButtonMap() )[ MOUSE_LBUTTON ] == KEY_HELD )
+         {
+             DirectX::XMFLOAT3 *delta = pInputHandler->getMousePosDelta();
+ 
+             if ( delta->x != 0 )
+             {
+                 camera.setHorizontalRotation( camera.getHorizontalRotation() + MOUSE_X_SCROLL_SPEED * delta->x );
+             }
+ 
+             if ( delta->y != 0 )
+             {
+                 camera.setVerticalRotation( camera.getVerticalRotation() + MOUSE_Y_SCROLL_SPEED * delta->y );
+             }
+         }
+ 
+         float mouseWheelDelta = pInputHandler->getMouseWheelDelta();
+ 
+         if ( mouseWheelDelta != 0 )
+         {
+             camera.setRadius( camera.getRadius() + MOUSE_WHEEL_SCROLL_SPEED * mouseWheelDelta );
+         }
     }
 
     /*----------------------------------------------------------------------------\

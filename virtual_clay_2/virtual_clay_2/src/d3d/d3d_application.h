@@ -3,6 +3,8 @@
 #include <d3d11.h>
 #include <WTypesbase.h>
 #include "d3d_sphere.h"
+#include "input/input_handler.h"
+#include "d3d_camera.h"
 
 //#include <d3d11.h>
 //#include <d3dx11.h>
@@ -85,7 +87,7 @@ namespace virtual_clay
     class D3DApplication
     {
     public:
-        D3DApplication(/*EventBroker *eventBroker, InputHandler *inputHandler, FrameController *frameController*/ );
+        D3DApplication( InputHandler* inputHandler/*EventBroker *eventBroker, InputHandler *inputHandler, FrameController *frameController*/ );
         ~D3DApplication();
 
         HRESULT initD3D( HWND hWnd );			// sets up and initialises Direct3D
@@ -141,7 +143,7 @@ namespace virtual_clay
 
         /*			Supporting operational classes		*/
         //EventBroker *pEventBroker;						// the event broker for the application
-        //InputHandler *pInputHandler;					// pointer to an input handler
+        InputHandler *pInputHandler;					// pointer to an input handler
         //FrameController *pFrameController;				// the frame controller for the application
 
         /*				User interface objects			*/
@@ -153,7 +155,7 @@ namespace virtual_clay
         /*				Game world objects				*/
         //ParticleManager particleManager;				// the particle manager
         D3DSphere mSphere;								// class which create and maintains the geometry of a sphere
-        //D3DCamera camera;								// the camera object
+        D3DCamera camera;								// the camera object
         //ToolManager mToolManager;
 
         bool m_allowDirectCompute;						// flag to show if the hardware supports DirectCompute

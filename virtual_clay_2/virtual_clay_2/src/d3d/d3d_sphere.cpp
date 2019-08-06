@@ -5,14 +5,15 @@
 namespace virtual_clay
 {
 	D3DSphere::D3DSphere()
-		: mNumVertices( 0 )
-		, mNumFaces( 0 )
-		, md3dDevice( 0 )
-		, mVB( 0 )
-		, mIB( 0 )
-		, mRadius( 0.0f )
+		: mRadius( 0.0f )
 		, mNumSlices( 0 )
 		, mNumStacks( 0 )
+		, mNumVertices( 0 )
+		, mNumFaces( 0 )
+		, md3dDevice( nullptr )
+		, pDevcon( nullptr )
+		, mVB( nullptr )
+		, mIB( nullptr )
 	{
 	}
 
@@ -123,6 +124,8 @@ namespace virtual_clay
 				v.Position.z = mRadius * sinf( phi ) * sinf( theta );
 				
 				DirectX::XMVECTOR vectorToNormalise = DirectX::XMLoadFloat3( &v.Position );
+
+				vectorToNormalise = DirectX::XMVector3Normalize( vectorToNormalise );
 
 				DirectX::XMStoreFloat3( &v.normal, vectorToNormalise );
 

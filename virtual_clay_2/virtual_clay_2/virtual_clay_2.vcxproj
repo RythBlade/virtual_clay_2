@@ -19,16 +19,20 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\d3d\d3d_camera.h" />
     <ClInclude Include="src\d3d\d3d_sphere.h" />
     <ClInclude Include="src\d3d\d3d_application.h" />
     <ClInclude Include="src\d3d\macros.h" />
     <ClInclude Include="src\d3d\vertex.h" />
+    <ClInclude Include="src\input\input_handler.h" />
     <ClInclude Include="src\settings\directx_settings.h" />
     <ClInclude Include="src\settings\window_settings.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\d3d\d3d_camera.cpp" />
     <ClCompile Include="src\d3d\d3d_sphere.cpp" />
     <ClCompile Include="src\d3d\d3d_application.cpp" />
+    <ClCompile Include="src\input\input_handler.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
