@@ -339,11 +339,11 @@ namespace virtual_clay
         //HrCheck( particleRenderer.init( &particleManager, pDev, pDevcon, &camera, m_allowDirectCompute ) );
         //
         //HrCheck( mToolManager.init( pDev, pDevcon, &camera, pInputHandler ) );
-        //
-        //// initiaise the camera position
+        
+        // initialise the camera position
         camera.setRadius( 10.0f );
         camera.setMatrices();
-        //
+        
         //D3D11_BUFFER_DESC bufferDesc;
         //
         ////----------------------------- create the constants buffer ------------------------

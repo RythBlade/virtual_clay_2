@@ -117,10 +117,10 @@ int WINAPI WinMain( HINSTANCE hInstance,
                 break;
             }
             
-            //// update the input handler - this must be the last thing called for the frame as it resets the mouse deltas and
-            //// rotates the button states to cater for non-consistent WinApi input events.
-            //inputHandler.updateInputHandler();
-            //
+            /// update the input handler - this must be the last thing called for the frame as it resets the mouse deltas and
+            // rotates the button states to cater for non-consistent WinApi input events.
+            inputHandler.updateInputHandler();
+            
             //// run the frame controller to ensure the application is running at the desired frame rate settings
             //frameController.frameEnded();
         }
@@ -141,11 +141,11 @@ LRESULT CALLBACK WindowProc( HWND hWnd, UINT message, WPARAM wParam, LPARAM lPar
     switch ( message )
     {
     case WM_KEYDOWN:
-        //inputHandler.sendKeyboardEvent( wParam, WM_KEYDOWN );
+        inputHandler.sendKeyboardEvent( wParam, WM_KEYDOWN );
         break;
 
     case WM_KEYUP:
-        //inputHandler.sendKeyboardEvent( wParam, WM_KEYUP );
+        inputHandler.sendKeyboardEvent( wParam, WM_KEYUP );
         break;
 
     case WM_LBUTTONDOWN:
@@ -153,23 +153,23 @@ LRESULT CALLBACK WindowProc( HWND hWnd, UINT message, WPARAM wParam, LPARAM lPar
     case WM_RBUTTONDOWN:
     case WM_XBUTTONDOWN:
         SetCapture( hWnd );
-        //inputHandler.sendMouseEvent( wParam, lParam, message );
+        inputHandler.sendMouseEvent( wParam, lParam, message );
         break;
 
     case WM_LBUTTONUP:
     case WM_MBUTTONUP:
     case WM_RBUTTONUP:
     case WM_XBUTTONUP:
-        //inputHandler.sendMouseEvent( wParam, lParam, message );
+        inputHandler.sendMouseEvent( wParam, lParam, message );
         ReleaseCapture();
         break;
 
     case WM_MOUSEMOVE:
-        //inputHandler.sendMouseEvent( wParam, lParam, message );
+        inputHandler.sendMouseEvent( wParam, lParam, message );
         break;
 
     case WM_MOUSEWHEEL:
-        //inputHandler.sendMouseWheelEvent( wParam );
+        inputHandler.sendMouseWheelEvent( wParam );
         break;
 
     case WM_DESTROY:
